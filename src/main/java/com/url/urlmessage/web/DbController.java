@@ -1,6 +1,6 @@
 package com.url.urlmessage.web;
 
-import com.sun.org.apache.xerces.internal.xs.StringList;
+import com.google.common.collect.Lists;
 import com.url.urlmessage.domain.model.Dbinfo;
 import com.url.urlmessage.service.DbinfoService;
 import com.url.urlmessage.service.RedisService;
@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.net.ServerSocket;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -25,7 +23,6 @@ public class DbController {
     @RequestMapping("/insert")
     private String insert() {
         for (int i = 0; i < 10; i++) {
-//            Dbinfo dbinfo = new Dbinfo();
             dbinfo.setName("wd");
             dbinfoService.addMumbers(dbinfo);
         }
@@ -34,10 +31,9 @@ public class DbController {
 
     @RequestMapping("/get")
     private List<Object> getList() {
-        List list = new ArrayList<>();
+        List list = Lists.newArrayList();
         list = dbinfoService.getList();
         System.out.println(list.size());
-
         list.forEach(item -> {
             System.out.println(item);
         });
@@ -49,7 +45,7 @@ public class DbController {
      */
     private static Integer key = 0;
 
-    private List<String> keys = Collections.synchronizedList(new ArrayList<String>());
+    private List<String> keys = Collections.synchronizedList(Lists.newArrayList());
 
     @Autowired
     RedisService redisService;
@@ -59,7 +55,7 @@ public class DbController {
         String keyName = "JDUrlDatabaseSpider_testTV:items";
         String k = getKey();
         System.out.println("k:" + k);
-        List list = new ArrayList<>();
+        List list = Lists.newArrayList();
         list = dbinfoService.getList();
         return redisService.addListString(list, keyName);
     }
