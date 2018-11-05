@@ -79,7 +79,54 @@
             <artifactId>jedis</artifactId>
         </dependency>
 
-    <!--json-->
+        <!--excel api-->
+
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>3.14</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>3.14</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml-schemas</artifactId>
+            <version>3.14</version>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.4</version>
+        </dependency>
+        <!--excel api ******end******-->
+
+        <!--access 2010及以上版本 api-->
+        <!--https://stackoverflow.com/questions/16626301/jdbc-driver-ms-access-connection-->
+        <dependency>
+            <groupId>net.sf.ucanaccess</groupId>
+            <artifactId>ucanaccess</artifactId>
+            <version>4.0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.healthmarketscience.jackcess</groupId>
+            <artifactId>jackcess-encrypt</artifactId>
+            <version>2.1.4</version>
+        </dependency>
+
+        <!--access 2010版以前-->
+        <!--<dependency>-->
+            <!--<groupId>net.ucanaccess</groupId>-->
+            <!--<artifactId>ucanaccess</artifactId>-->
+            <!--<version>2.0.1</version>-->
+        <!--</dependency>-->
+
+        <!--json-->
         <!--<dependency>-->
             <!--<groupId>net.sf.json-lib</groupId>-->
             <!--<artifactId>json-lib</artifactId>-->

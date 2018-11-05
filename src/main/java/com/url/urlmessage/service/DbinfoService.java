@@ -26,8 +26,8 @@ public class DbinfoService {
     /**
      * 添加
      *
-     * @param dbinfo
-     * @return
+     * @param dbinfo:实体
+     * @return 影响条数
      */
     public int addMumbers(Dbinfo dbinfo) {
         int res = jdbcTemplate.update("insert into dbinfo(name) values(?)",
@@ -43,7 +43,7 @@ public class DbinfoService {
     /**
      * 返回map类型的list集合
      *
-     * @return
+     * @return Dbinfo
      */
     public List<Dbinfo> getListMap() {
         String sql = "SELECT * FROM DBINFO";
@@ -60,14 +60,26 @@ public class DbinfoService {
     /**
      * 返回list集
      *
-     * @return
+     * @return list
      */
     public List<Object> getList() {
-        String sql = "SELECT '{\"url\": \"'+页面信息+'\",\"attr\": {\"urlleibie\": \"'+品类+'\",\"urlweb\": \"'+电商+'\",\"brand\": \"'+品牌+'\",\"model\": \"'+机型+'\"}}' FROM URLDATA WHERE NEED=0 AND 电商!='天猫商城'";
+        String sql = "SELECT TOP 100 '{\"url\": \"'+页面信息+'\",\"attr\": {\"urlleibie\": \"'+品类+'\",\"urlweb\": \"'+电商+'\",\"brand\": \"'+品牌+'\",\"model\": \"'+机型+'\"}}' FROM URLDATA WHERE NEED=0 AND 电商!='天猫商城'";
         SqlRowSet st = jdbcTemplate.queryForRowSet(sql);
         List list = Lists.newArrayList();
         while (st.next())
             list.add(st.getString(1));
         return list;
+    }
+
+    /**
+     * 查询这个表的数据，保存成List<Map<String,Object>>
+     * @return
+     */
+    @SuppressWarnings("rawtypes")
+    public List getMapList() {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("SELECT TOP 5000 页面信息,品类,品牌,机型,旗舰店 FROM URLDATA WHERE NEED=0 AND 电商!='天猫商城'");
+//        stringBuilder.append("SELECT TOP 50000 zzid,月度,周度,品类,品牌,机型编码,机型,单价,销量,销额,电商,评论人,评论日期,总体评价,商品名称,页面信息,促销信息,旗舰店,dataflag,销售类型,货仓,月销量,COLOUR,SIZE,旗舰店类型,写入日期 FROM dbase..av_线上周度彩电永久表2018年");
+        return jdbcTemplate.queryForList(stringBuilder.toString());
     }
 }
