@@ -59,7 +59,6 @@ public class DbinfoService {
 
     /**
      * 返回list集
-     *
      * @return list
      */
     public List<Object> getList() {

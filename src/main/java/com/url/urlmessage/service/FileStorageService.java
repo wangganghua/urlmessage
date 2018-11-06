@@ -33,6 +33,12 @@ public class FileStorageService {
         }
     }
 
+    /**
+     * 保存文件
+     *
+     * @param file :文件
+     * @return
+     */
     public String storeFile(MultipartFile file) {
         String fileName = StringUtils.cleanPath(file.getOriginalFilename());
         try {

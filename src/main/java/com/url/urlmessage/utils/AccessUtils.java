@@ -1,4 +1,4 @@
-package com.url.urlmessage.Utils;
+package com.url.urlmessage.utils;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.ClassPathResource;

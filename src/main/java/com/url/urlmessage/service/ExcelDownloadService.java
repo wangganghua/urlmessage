@@ -1,7 +1,7 @@
 package com.url.urlmessage.service;
 
 import com.google.common.collect.Lists;
-import com.url.urlmessage.Utils.SystemConfig;
+import com.url.urlmessage.utils.SystemConfig;
 import org.apache.poi.hssf.usermodel.*;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.*;
@@ -83,7 +83,6 @@ public class ExcelDownloadService {
             e.printStackTrace();
         }
     }
-
 
     @Transactional
     public void ExcelDownload_XSLX(HttpServletResponse httpServletResponse, String properName) {

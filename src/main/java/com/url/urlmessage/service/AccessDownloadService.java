@@ -1,7 +1,7 @@
 package com.url.urlmessage.service;
 
 import com.google.common.collect.Lists;
-import com.url.urlmessage.Utils.AccessUtils;
+import com.url.urlmessage.utils.AccessUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
