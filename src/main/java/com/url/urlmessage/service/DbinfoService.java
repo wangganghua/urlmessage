@@ -73,7 +73,7 @@ public class DbinfoService {
 
     /**
      * 查询这个表的数据，保存成List<Map<String,Object>>
-     * @return
+     * @return  list data
      */
     @SuppressWarnings("rawtypes")
     public List getMapList() {

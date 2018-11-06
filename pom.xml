@@ -119,6 +119,18 @@
             <version>2.1.4</version>
         </dependency>
 
+        <!--html -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+
+        <!--file-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
         <!--access 2010版以前-->
         <!--<dependency>-->
             <!--<groupId>net.ucanaccess</groupId>-->
