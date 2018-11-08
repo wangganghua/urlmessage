@@ -21,6 +21,7 @@ public class RedisServiceImpl implements RedisService {
      * @return 消耗时长
      * @throws Exception:抛出错误信息
      */
+    @Override
     public Object addListString(List<String> list, String keyName) throws Exception {
         long begin = System.currentTimeMillis();
         Jedis jedis = new Jedis(redis_host, redis_port);

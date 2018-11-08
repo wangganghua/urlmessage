@@ -24,6 +24,7 @@ public class FileStorageServiceImpl implements FileStorageService {
     @Autowired
     FileStoragePropertys fileStoragePropertys;
 
+    @Override
     public void fileStorageService(FileStoragePropertys fileStoragePropertys) {
         this.fileStorageLocating = Paths.get(fileStoragePropertys.getUploadDir())
                 .toAbsolutePath()
@@ -42,6 +43,7 @@ public class FileStorageServiceImpl implements FileStorageService {
      * @param file :文件
      * @return
      */
+    @Override
     public String storeFile(MultipartFile file) {
         fileStorageService(fileStoragePropertys);
         String fileName = StringUtils.cleanPath(file.getOriginalFilename());
@@ -58,6 +60,7 @@ public class FileStorageServiceImpl implements FileStorageService {
         }
     }
 
+    @Override
     public Resource loadFileAsResource(String fileName) {
         try {
             Path filePath = this.fileStorageLocating.resolve(fileName).normalize();

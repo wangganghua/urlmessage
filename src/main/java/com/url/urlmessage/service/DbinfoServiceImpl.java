@@ -28,6 +28,7 @@ public class DbinfoServiceImpl implements DbinfoService {
      * @param dbinfo:实体
      * @return 影响条数
      */
+    @Override
     public int addMumbers(Dbinfo dbinfo) {
         int res = jdbcTemplate.update("insert into dbinfo(name) values(?)",
                 new PreparedStatementSetter() {
@@ -44,6 +45,7 @@ public class DbinfoServiceImpl implements DbinfoService {
      *
      * @return Dbinfo
      */
+    @Override
     public List<Dbinfo> getListMap() {
         String sql = "SELECT * FROM DBINFO";
         return (List<Dbinfo>) jdbcTemplate.query(sql, new RowMapper<Dbinfo>() {
@@ -60,6 +62,7 @@ public class DbinfoServiceImpl implements DbinfoService {
      * 返回list集
      * @return list
      */
+    @Override
     public List<Object> getList() {
         String sql = "SELECT TOP 100 '{\"url\": \"'+页面信息+'\",\"attr\": {\"urlleibie\": \"'+品类+'\",\"urlweb\": \"'+电商+'\",\"brand\": \"'+品牌+'\",\"model\": \"'+机型+'\"}}' FROM URLDATA WHERE NEED=0 AND 电商!='天猫商城'";
         SqlRowSet st = jdbcTemplate.queryForRowSet(sql);
@@ -74,6 +77,7 @@ public class DbinfoServiceImpl implements DbinfoService {
      * @return  list data
      */
     @SuppressWarnings("rawtypes")
+    @Override
     public List getMapList() {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("SELECT TOP 5000 页面信息,品类,品牌,机型,旗舰店 FROM URLDATA WHERE NEED=0 AND 电商!='天猫商城'");

@@ -16,6 +16,7 @@ public class AccessDownloadServiceImpl implements AccessDownloadService {
     /**
      * 导出数据,存放至 access 文件
      */
+    @Override
     public void getData() {
         //第一步,先复制空 .mdb文件 重新命名
         String new_path = "E:\\\\wgh.accdb";
@@ -60,7 +61,7 @@ public class AccessDownloadServiceImpl implements AccessDownloadService {
             System.out.println("创建Access文件失败：" + new_path);
         }
     }
-
+    @Override
     public String removeCharAt(String s, int pos) {
         return s.substring(0, pos) + s.substring(pos + 1);
     }

@@ -20,6 +20,7 @@ public class ExcelDownloadServiceImpl implements ExcelDownloadService {
     //获取配置文件中对应属性值
     private String getProperties;
 
+    @Override
     @Transactional
     public void ExcelDownload_XSL(HttpServletResponse httpServletResponse, String properName) {
         HSSFWorkbook hssfWorkbook = new HSSFWorkbook();
@@ -78,6 +79,7 @@ public class ExcelDownloadServiceImpl implements ExcelDownloadService {
         }
     }
 
+    @Override
     @Transactional
     public void ExcelDownload_XSLX(HttpServletResponse httpServletResponse, String properName) {
         XSSFWorkbook hssfWorkbook = new XSSFWorkbook();
