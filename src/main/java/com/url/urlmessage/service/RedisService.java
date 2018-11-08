@@ -20,7 +20,7 @@ public class RedisService {
 
     /**
      * 批量注入redis
-     * @param list: 注入 list 集合
+     * @param list: 使用pipline批量快速注入 list 集合
      * @param keyName： redis key
      * @return 消耗时长
      * @throws Exception:抛出错误信息

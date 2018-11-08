@@ -87,7 +87,7 @@ public class ExcelDownloadService {
     @Transactional
     public void ExcelDownload_XSLX(HttpServletResponse httpServletResponse, String properName) {
         XSSFWorkbook hssfWorkbook = new XSSFWorkbook();
-        XSSFSheet hssfSheet = hssfWorkbook.createSheet("sheet1");
+        XSSFSheet xssfSheet = hssfWorkbook.createSheet("sheet1");
         getProperties = SystemConfig.getProperty("cqwf2." + properName);
         String[] info = properName.split(",");
 
@@ -101,14 +101,14 @@ public class ExcelDownloadService {
         String fileName = "wghtest.xlsx";
 
         //创建表头
-        XSSFRow hssfRow = hssfSheet.createRow(0);
+        XSSFRow xssfRow = xssfSheet.createRow(0);
         //循环添加表头
         int index = 0;
 
         for (String item : keylist_xlsx) {
-            XSSFCell hssfCell = hssfRow.createCell(index);
-            XSSFRichTextString hssfRichTextString = new XSSFRichTextString(valuelist.get(index));
-            hssfCell.setCellValue(hssfRichTextString);
+            XSSFCell xssfCell = xssfRow.createCell(index);
+            XSSFRichTextString xssfRichTextString = new XSSFRichTextString(valuelist.get(index));
+            xssfCell.setCellValue(xssfRichTextString);
             index++;
         }
 
@@ -119,7 +119,7 @@ public class ExcelDownloadService {
             //一个List对象是一个Map，一行数据，一个Map对象对应一行里的一条数据
             Map tableMapxlsx = tableInfoList.get(i);
             //表头是第0行，所以从第一行开始创建
-            Row rowxlsx = hssfSheet.createRow(i + 1);
+            Row rowxlsx = xssfSheet.createRow(i + 1);
             for (int j = 0; j < keylist_xlsx.size(); j++) {
                 //获取指定字段的值，判断是否为空
                 Object object_xlsx = tableMapxlsx.get(keylist_xlsx.get(j));

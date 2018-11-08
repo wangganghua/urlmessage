@@ -50,7 +50,7 @@ public class AccessDownloadService {
                         value += "'" + object_xlsx.toString() + "',";
                     }
                     value = removeCharAt(value, value.lastIndexOf(","));
-                    sql += value+ ")";
+                    sql += value + ")";
                     listSql.add(sql);
                 }
                 //第四步,开始写入
