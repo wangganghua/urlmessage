@@ -121,7 +121,6 @@ public class AccessUtils {
             listSql.forEach(item -> {
                 try {
                     statement.executeUpdate(item.toString());
-
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
