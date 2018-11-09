@@ -1,7 +1,6 @@
 package com.url.urlmessage.service;
 
-import com.url.urlmessage.exception.FileStorageException;
-import com.url.urlmessage.exception.MyFileNotFoundException;
+import com.url.urlmessage.exception.AppRuntimeException;
 import com.url.urlmessage.property.FileStoragePropertys;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
@@ -33,7 +32,7 @@ public class FileStorageServiceImpl implements FileStorageService {
             Files.createDirectories(this.fileStorageLocating);
         } catch (IOException e) {
             e.printStackTrace();
-            throw new FileStorageException("创建目录失败:" + e);
+            throw new AppRuntimeException("创建目录失败:" + e);
         }
     }
 
@@ -49,14 +48,14 @@ public class FileStorageServiceImpl implements FileStorageService {
         String fileName = StringUtils.cleanPath(file.getOriginalFilename());
         try {
             if (fileName.contains("..")) {
-                throw new FileStorageException("文件包含无效字符:" + fileName);
+                throw new AppRuntimeException("文件包含无效字符:" + fileName);
             }
             Path targetLocation = this.fileStorageLocating.resolve(fileName);
             Files.copy(file.getInputStream(), targetLocation, StandardCopyOption.REPLACE_EXISTING);
             return fileName;
         } catch (IOException e) {
             e.printStackTrace();
-            throw new FileStorageException("创建失败," + fileName, e);
+            throw new AppRuntimeException("创建失败," + fileName, e);
         }
     }
 
@@ -68,11 +67,11 @@ public class FileStorageServiceImpl implements FileStorageService {
             if (resource.exists()) {
                 return resource;
             } else {
-                throw new MyFileNotFoundException("未找到 " + fileName);
+                throw new AppRuntimeException("未找到 " + fileName);
             }
         } catch (Exception e) {
             e.printStackTrace();
-            throw new MyFileNotFoundException("未找到：" + fileName, e);
+            throw new AppRuntimeException("未找到：" + fileName, e);
         }
     }
 }
